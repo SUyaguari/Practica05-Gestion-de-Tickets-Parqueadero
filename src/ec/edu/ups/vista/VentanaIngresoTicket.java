@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ec.edu.ups.vista;
 
 /**
@@ -149,30 +144,15 @@ public class VentanaIngresoTicket extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        tblVehiculos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblVehiculosMouseClicked(evt);
-            }
-        });
         jScrollPane1.setViewportView(tblVehiculos);
 
         btnMostrar.setFont(new java.awt.Font("Tahoma", 2, 16)); // NOI18N
         btnMostrar.setText("Mostrar todos");
-        btnMostrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMostrarActionPerformed(evt);
-            }
-        });
 
         lblBuscar.setFont(new java.awt.Font("Tahoma", 2, 16)); // NOI18N
         lblBuscar.setText("Buscar:");
 
         btnBuscar.setText("Buscar");
-        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarActionPerformed(evt);
-            }
-        });
 
         cbxOpcionesBusqueda.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Placa", "Cedula" }));
 
@@ -244,35 +224,6 @@ public class VentanaIngresoTicket extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void tblVehiculosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblVehiculosMouseClicked
-        int fila = tblVehiculos.getSelectedRow();
-
-        String cedula = (String) tblVehiculos.getValueAt(fila, fila);
-
-        txtCedulaPropietario.setText(cedula);
-        btnRegistrar.setEnabled(true);
-
-    }//GEN-LAST:event_tblVehiculosMouseClicked
-
-    private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
-        datosTablasClientes();
-    }//GEN-LAST:event_btnMostrarActionPerformed
-
-    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        String cedulla = txtBuscarCliente.getText();
-
-        if(cedulla.isEmpty()){
-            JOptionPane.showMessageDialog(this, "Ingrese la cedula del cliente que desea buscar");
-        }else{
-            Cliente cl = controladorCliente.buscarCliente(cedulla);
-            if(cl!=null){
-                imprimirCliente(cedulla);
-            }else{
-                JOptionPane.showMessageDialog(this, "Numero de cedula no registrado");
-            }
-        }
-    }//GEN-LAST:event_btnBuscarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
