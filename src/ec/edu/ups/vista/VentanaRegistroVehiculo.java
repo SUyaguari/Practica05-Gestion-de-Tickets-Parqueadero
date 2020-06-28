@@ -28,6 +28,7 @@ public class VentanaRegistroVehiculo extends javax.swing.JInternalFrame {
         this.controladorVehiculo = controladorVehiculo;
         this.controladorCliente = controladorCliente;
         formatearPlacaVehiculo();
+        formatearCedula();
         
         btnRegistrar.setEnabled(false);
     }
@@ -60,8 +61,8 @@ public class VentanaRegistroVehiculo extends javax.swing.JInternalFrame {
         tblClientes = new javax.swing.JTable();
         btnMostrar = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
-        txtBuscarCliente = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
+        txtBuscarFormattedField = new javax.swing.JFormattedTextField();
 
         setTitle("Registro de Vehiculos");
 
@@ -221,8 +222,8 @@ public class VentanaRegistroVehiculo extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel8)
-                        .addGap(50, 50, 50)
-                        .addComponent(txtBuscarCliente))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtBuscarFormattedField, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel6))
                 .addGap(54, 54, 54)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -240,8 +241,8 @@ public class VentanaRegistroVehiculo extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(txtBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscar))
+                    .addComponent(btnBuscar)
+                    .addComponent(txtBuscarFormattedField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -325,7 +326,7 @@ public class VentanaRegistroVehiculo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        String cedulla = txtBuscarCliente.getText();
+        String cedulla = txtBuscarFormattedField.getText();
         
         if(cedulla.isEmpty()){
             JOptionPane.showMessageDialog(this, "Ingrese la cedula del cliente que desea buscar");
@@ -394,11 +395,25 @@ public class VentanaRegistroVehiculo extends javax.swing.JInternalFrame {
     
     public void limpiar(){
         
-        txtBuscarCliente.setText("");
+        txtBuscarFormattedField.setText("");
         txtCedulaPropietario.setText("");
         txtMarca.setText("");
         txtModelo.setText("");
         txtPlacaFormatted.setText("");
+    }
+    
+     public void formatearCedula() {
+        try {
+            txtBuscarFormattedField.setFormatterFactory(
+                    new javax.swing.text.DefaultFormatterFactory(
+                            new javax.swing.text.MaskFormatter("#########-#")
+                    )
+            );
+        } catch (java.text.ParseException ex) {
+            JOptionPane.showMessageDialog(this, "Formato de la cedula erroneo");
+            ex.printStackTrace();
+        }
+
     }
    
     
@@ -419,7 +434,7 @@ public class VentanaRegistroVehiculo extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblClientes;
-    private javax.swing.JTextField txtBuscarCliente;
+    private javax.swing.JFormattedTextField txtBuscarFormattedField;
     private javax.swing.JTextField txtCedulaPropietario;
     private javax.swing.JTextField txtMarca;
     private javax.swing.JTextField txtModelo;
