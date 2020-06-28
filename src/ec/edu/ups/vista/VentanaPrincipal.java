@@ -40,7 +40,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         venRegistroCliente = new VentanaRegistroCliente(controladorCliente);
         ventanaRegistroVehiculo = new VentanaRegistroVehiculo(controladorVehiculo, controladorCliente);
-        ventanaIngresoTicket = new VentanaIngresoTicket(controladorTicket, controladorVehiculo);
+        ventanaIngresoTicket = new VentanaIngresoTicket(controladorTicket, controladorVehiculo, controladorCliente, ventanaRegistroVehiculo);
         
         desktopPane.add(venRegistroCliente);
         desktopPane.add(ventanaRegistroVehiculo);
