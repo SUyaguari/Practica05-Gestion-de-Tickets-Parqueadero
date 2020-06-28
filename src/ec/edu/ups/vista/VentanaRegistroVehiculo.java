@@ -330,7 +330,7 @@ public class VentanaRegistroVehiculo extends javax.swing.JInternalFrame {
         }else{
             Cliente cl = controladorCliente.buscarCliente(cedulla);
             if(cl!=null){
-                
+                imprimirCliente(cedulla);
             }else{
                 JOptionPane.showMessageDialog(this, "Numero de cedula no registrado");
             }
@@ -364,6 +364,26 @@ public class VentanaRegistroVehiculo extends javax.swing.JInternalFrame {
             
             Object[] objeto = {cliente.getCedula(), cliente.getNombre(), cliente.getDireccion(), cliente.getTelefono()};
             modelo.addRow(objeto);
+        }
+        
+        tblClientes.setModel(modelo);
+        
+    }
+    
+    private void imprimirCliente(String cedula){
+        
+        DefaultTableModel modelo = (DefaultTableModel) tblClientes.getModel();
+        modelo.setRowCount(0);
+        
+        Map<String, Cliente> lista = controladorCliente.listarClientes();
+        for (Map.Entry<String, Cliente> entry : lista.entrySet()) {
+            String key = entry.getKey();
+            Cliente cliente = lista.get(key);
+            if(key.equals(cedula)){
+                Object[] objeto = {cliente.getCedula(), cliente.getNombre(), cliente.getDireccion(), cliente.getTelefono()};
+                modelo.addRow(objeto);
+            }
+            
         }
         
         tblClientes.setModel(modelo);
