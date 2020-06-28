@@ -18,6 +18,7 @@ public interface IClienteDAO {
     public Cliente read(String cedula);
     public void update(Cliente cliente);
     public void delite(Cliente cliente);
+    public Cliente buscarVehiculos(String placa);
     public Map<String, Cliente> findAll();
     
 }

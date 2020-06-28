@@ -101,4 +101,15 @@ public class ControladorCliente {
     
     }
     
+    public Cliente buscarVehiculos(String placa){
+        
+        cliente = clienteDao.buscarVehiculos(placa);
+        if(cliente!=null){
+            return cliente;
+        }else{
+            return null;
+        }
+        
+    }
+    
 }

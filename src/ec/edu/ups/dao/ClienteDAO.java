@@ -2,7 +2,9 @@ package ec.edu.ups.dao;
 
 import ec.edu.ups.idao.IClienteDAO;
 import ec.edu.ups.modelo.Cliente;
+import ec.edu.ups.modelo.Vehiculo;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -53,6 +55,22 @@ public class ClienteDAO implements IClienteDAO{
         
         return listaClientes;
     
+    }
+
+    @Override
+    public Cliente buscarVehiculos(String placa) {
+        for (Map.Entry<String, Cliente> entry : listaClientes.entrySet()) {
+            Cliente value = entry.getValue();
+            
+            List<Vehiculo> lista = value.getListaVehiculos();
+            
+            for (Vehiculo vehiculo : lista) {
+                if(vehiculo.getPlaca().equals(placa)){
+                    return value;
+                }
+            }
+        }
+        return null;
     }
     
 }
