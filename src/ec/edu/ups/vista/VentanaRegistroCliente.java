@@ -43,6 +43,8 @@ public class VentanaRegistroCliente extends javax.swing.JInternalFrame {
         btnRegistrar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
 
+        setTitle("Registro de Clientes");
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 3, 48)); // NOI18N
         jLabel1.setText("Registrar Clientes");
 
