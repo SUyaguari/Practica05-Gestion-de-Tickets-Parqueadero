@@ -177,7 +177,6 @@ public class VentanaRegistroCliente extends javax.swing.JInternalFrame {
                 controladorCliente.crearCliente(cedula, nombre, direccion, telefono);
                 JOptionPane.showMessageDialog(this, "Cliente creado con exito");
                 limpiar();
-                Map<String, Cliente> lista = controladorCliente.listarClientes();
                 
             }else{
                 JOptionPane.showMessageDialog(this, "Cedula del cliente ya ingresada");
