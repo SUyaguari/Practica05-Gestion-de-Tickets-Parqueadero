@@ -73,5 +73,32 @@ public class ControladorCliente {
         
     }
     
-
+        public void agregrarVehiculo(Vehiculo vehiculo, String cedula){
+        
+        cliente = clienteDao.read(cedula);
+        if(cliente!=null){
+            
+            cliente.agregarVehiculo(vehiculo);
+            clienteDao.update(cliente);
+            
+        }
+    
+    }
+    
+    public void actualizarVehiculo(Vehiculo vehiculo, Cliente cliente){
+        
+        vehiculoDao.update(vehiculo);
+        cliente.actualizarVehiculo(vehiculo);
+        clienteDao.update(cliente);
+        
+    }
+    
+    public void eliminarVehiculo(Vehiculo vehiculo, Cliente cliente){
+        
+        vehiculoDao.delite(vehiculo);
+        cliente.eliminarVehiculo(vehiculo);
+        clienteDao.update(cliente);
+    
+    }
+    
 }
