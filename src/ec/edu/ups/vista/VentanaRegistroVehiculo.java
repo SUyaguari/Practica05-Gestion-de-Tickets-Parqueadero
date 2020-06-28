@@ -391,7 +391,9 @@ public class VentanaRegistroVehiculo extends javax.swing.JInternalFrame {
     }
     
     public void limpiar(){
-
+        
+        txtBuscarCliente.setText("");
+        txtCedulaPropietario.setText("");
         txtMarca.setText("");
         txtModelo.setText("");
         txtPlacaFormatted.setText("");
