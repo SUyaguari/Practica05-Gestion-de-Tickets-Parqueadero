@@ -22,7 +22,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private ControladorTicket controladorTicket;
     
     private VentanaRegistroCliente venRegistroCliente;
-    private ventanaRegistroVehiculo ventRegistroVehiculo;
+    private VentanaRegistroVehiculo ventRegistroVehiculo;
             
     public VentanaPrincipal() {
         initComponents();
@@ -36,7 +36,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         controladorTicket = new ControladorTicket(ticketDAO);
         
         venRegistroCliente = new VentanaRegistroCliente(controladorCliente);
-        ventRegistroVehiculo = new ventanaRegistroVehiculo(controladorVehiculo, controladorCliente);
+        ventRegistroVehiculo = new VentanaRegistroVehiculo(controladorVehiculo, controladorCliente);
         
         desktopPane.add(venRegistroCliente);
         desktopPane.add(ventRegistroVehiculo);
