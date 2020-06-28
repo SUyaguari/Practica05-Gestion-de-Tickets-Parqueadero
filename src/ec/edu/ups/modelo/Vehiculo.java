@@ -67,6 +67,26 @@ public class Vehiculo {
         return hash;
     }
     
+    public void agregarTIcket(Ticket ticket){
+        
+        listaTickets.add(ticket);
+        
+    }
+    
+    public void actualizarTicket(Ticket ticket){
+        
+        if(listaTickets.contains(ticket)){
+            int pos = listaTickets.indexOf(ticket);
+            listaTickets.set(pos, ticket);
+        }
+    }
+    
+    public void eliminarTicket(Ticket ticket){
+        
+        if(listaTickets.contains(ticket)){
+            listaTickets.remove(ticket);
+        }
+    }
 
     @Override
     public boolean equals(Object obj) {
