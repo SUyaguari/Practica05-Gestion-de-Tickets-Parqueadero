@@ -70,5 +70,31 @@ public class ControladorVehiculo {
                 
     }
     
+    public void agregarTicket(Ticket ticket, String placa){
+        
+        vehiculo = vehiculoDAO.read(placa);
+        if(vehiculo!=null){
+            
+            vehiculo.agregarTIcket(ticket);
+            vehiculoDAO.update(vehiculo);
+            
+        }
+    }
     
+    
+    public void actualizarTicket(Ticket ticket, Vehiculo vehiculo){
+        
+        ticketDAO.update(ticket);
+        vehiculo.actualizarTicket(ticket);
+        vehiculoDAO.update(vehiculo);
+        
+    }
+    
+    public void eliminarTicket(Ticket ticket, Vehiculo vehiculo){
+        
+        ticketDAO.delite(ticket);
+        vehiculo.eliminarTicket(ticket);
+        vehiculoDAO.update(vehiculo);
+        
+    }
 }
