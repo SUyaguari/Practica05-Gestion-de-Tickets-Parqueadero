@@ -69,6 +69,23 @@ public class Cliente {
     public void setListaVehiculos(ArrayList listaVehiculo) {
         this.listaVehiculos = listaVehiculo;
     }
+    
+    public void agregarVehiculo(Vehiculo vehiculo){
+        listaVehiculos.add(vehiculo);
+    }
+    
+    public void actualizarVehiculo(Vehiculo vehiculo){
+        if(listaVehiculos.contains(vehiculo)){
+            int pos = listaVehiculos.indexOf(vehiculo);
+            listaVehiculos.set(pos, vehiculo);
+        }
+    }
+    
+    public void eliminarVehiculo(Vehiculo vehiculo){
+        if(listaVehiculos.contains(vehiculo)){
+            listaVehiculos.remove(vehiculo);
+        }
+    }
 
     @Override
     public int hashCode() {
