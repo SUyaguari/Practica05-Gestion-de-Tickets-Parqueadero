@@ -18,6 +18,8 @@ public class VentanaRegistroCliente extends javax.swing.JInternalFrame {
         initComponents();
         
         this.controladorCliente = controladorCliente;
+        formatearCedula();
+        
     }
 
     /**
@@ -33,7 +35,6 @@ public class VentanaRegistroCliente extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        txtCedula = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -42,6 +43,7 @@ public class VentanaRegistroCliente extends javax.swing.JInternalFrame {
         txtTelefono = new javax.swing.JTextField();
         btnRegistrar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
+        txtCedulaFormattedField = new javax.swing.JFormattedTextField();
 
         setTitle("Registro de Clientes");
 
@@ -100,10 +102,10 @@ public class VentanaRegistroCliente extends javax.swing.JInternalFrame {
                             .addComponent(jLabel6))
                         .addGap(47, 47, 47)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtCedula, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
-                            .addComponent(txtNombre)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
                             .addComponent(txtDireccion)
-                            .addComponent(txtTelefono))
+                            .addComponent(txtTelefono)
+                            .addComponent(txtCedulaFormattedField))
                         .addGap(55, 55, 55))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(79, 79, 79)
@@ -120,7 +122,7 @@ public class VentanaRegistroCliente extends javax.swing.JInternalFrame {
                 .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCedulaFormattedField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -158,7 +160,7 @@ public class VentanaRegistroCliente extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         pack();
@@ -166,7 +168,7 @@ public class VentanaRegistroCliente extends javax.swing.JInternalFrame {
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         
-        String cedula = txtCedula.getText();
+        String cedula = txtCedulaFormattedField.getText();
         String direccion = txtDireccion.getText();
         String nombre = txtNombre.getText();
         String telefono = txtTelefono.getText();
@@ -192,8 +194,22 @@ public class VentanaRegistroCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     
+     public void formatearCedula() {
+        try {
+            txtCedulaFormattedField.setFormatterFactory(
+                    new javax.swing.text.DefaultFormatterFactory(
+                            new javax.swing.text.MaskFormatter("#########-#")
+                    )
+            );
+        } catch (java.text.ParseException ex) {
+            JOptionPane.showMessageDialog(this, "Formato de la cedula erroneo");
+            ex.printStackTrace();
+        }
+
+    }
+    
     public void limpiar(){
-        txtCedula.setText("");
+        txtCedulaFormattedField.setText("");
         txtDireccion.setText("");
         txtNombre.setText("");
         txtTelefono.setText("");
@@ -210,7 +226,7 @@ public class VentanaRegistroCliente extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txtCedula;
+    private javax.swing.JFormattedTextField txtCedulaFormattedField;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtTelefono;
