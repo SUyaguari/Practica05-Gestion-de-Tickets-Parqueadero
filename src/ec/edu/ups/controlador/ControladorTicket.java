@@ -18,11 +18,11 @@ public class ControladorTicket {
         this.ticketDAO = ticketDAO;
     }
     
-   public void crearTicket(int numero, Date ingreso){
+   public Ticket crearTicket(int numero, Date ingreso){
        
        ticket = new Ticket(numero, ingreso);
        ticketDAO.create(ticket);
-       
+       return ticket;
    }
    
    public Ticket buscarTicket(int numero){
@@ -67,7 +67,7 @@ public class ControladorTicket {
    public int codigo(){
        
        int codigo = ticketDAO.codigo();
-       return codigo++ ;
+       return (++codigo) ;
    
    }
     

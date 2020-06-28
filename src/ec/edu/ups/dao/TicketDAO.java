@@ -26,7 +26,7 @@ public class TicketDAO implements ITicketDAO{
     public void create(Ticket ticket) {
         
         listaTickets.put(ticket.getNumero(), ticket);
-        
+        ticket.setNumero(++codigo);
     }
 
     @Override
