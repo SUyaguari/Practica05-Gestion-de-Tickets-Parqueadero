@@ -21,7 +21,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private ControladorTicket controladorTicket;
     
     private VentanaRegistroCliente venRegistroCliente;
-    private VentanaRegistroVehiculos ventRegistroVehiculo;
+    private VentanaRegistroVehiculo ventanaRegistroVehiculo;
     
     private ResourceBundle mensajes;
     private Locale localizacion;
@@ -38,10 +38,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         controladorTicket = new ControladorTicket(ticketDAO);
         
         venRegistroCliente = new VentanaRegistroCliente(controladorCliente);
-        ventRegistroVehiculo = new VentanaRegistroVehiculos(controladorVehiculo, controladorCliente);
+        ventanaRegistroVehiculo = new VentanaRegistroVehiculo(controladorVehiculo, controladorCliente);
         
         desktopPane.add(venRegistroCliente);
-        desktopPane.add(ventRegistroVehiculo);
+        desktopPane.add(ventanaRegistroVehiculo);
     }
     
     public void cambiarIdioma(){
@@ -204,7 +204,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void registrarVehiculoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarVehiculoMenuItemActionPerformed
         cerrarVentanas();
-        ventRegistroVehiculo.setVisible(true);
+        ventanaRegistroVehiculo.setVisible(true);
     }//GEN-LAST:event_registrarVehiculoMenuItemActionPerformed
 
     private void retirarTicketMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retirarTicketMenuItemActionPerformed
@@ -229,7 +229,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     public void cerrarVentanas(){
         venRegistroCliente.setVisible(false);
-        ventRegistroVehiculo.setVisible(false);
+        ventanaRegistroVehiculo.setVisible(false);
     }
     
     public static void main(String args[]) {

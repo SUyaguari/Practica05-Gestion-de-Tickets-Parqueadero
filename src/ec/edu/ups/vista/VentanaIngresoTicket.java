@@ -5,10 +5,8 @@ package ec.edu.ups.vista;
  * @author Estudiantes
  */
 public class VentanaIngresoTicket extends javax.swing.JInternalFrame {
-
-    /**
-     * Creates new form VentanaIngresoTicket
-     */
+    
+    
     public VentanaIngresoTicket() {
         initComponents();
     }
