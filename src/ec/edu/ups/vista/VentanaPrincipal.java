@@ -6,11 +6,10 @@ import ec.edu.ups.controlador.ControladorVehiculo;
 import ec.edu.ups.dao.ClienteDAO;
 import ec.edu.ups.dao.TicketDAO;
 import ec.edu.ups.dao.VehiculoDAO;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
-/**
- *
- * @author Estudiantes
- */
+
 public class VentanaPrincipal extends javax.swing.JFrame {
 
     private ClienteDAO clienteDAO;
@@ -22,7 +21,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private ControladorTicket controladorTicket;
     
     private VentanaRegistroCliente venRegistroCliente;
-    private VentanaRegistroVehiculo ventRegistroVehiculo;
+    private VentanaRegistroVehiculos ventRegistroVehiculo;
+    
+    private ResourceBundle mensajes;
+    private Locale localizacion;
             
     public VentanaPrincipal() {
         initComponents();
@@ -36,10 +38,30 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         controladorTicket = new ControladorTicket(ticketDAO);
         
         venRegistroCliente = new VentanaRegistroCliente(controladorCliente);
-        ventRegistroVehiculo = new VentanaRegistroVehiculo(controladorVehiculo, controladorCliente);
+        ventRegistroVehiculo = new VentanaRegistroVehiculos(controladorVehiculo, controladorCliente);
         
         desktopPane.add(venRegistroCliente);
         desktopPane.add(ventRegistroVehiculo);
+    }
+    
+    public void cambiarIdioma(){
+        
+        registrarMenu.setText(mensajes.getString("registrarMenu"));
+        registrarClienteMenuItem.setText(mensajes.getString("registrarClienteMenuItem"));
+        registrarVehiculoMenuItem.setText(mensajes.getString("registrarVehiculoMenuItem"));
+        salirMenuItem.setText(mensajes.getString("salirMenuItem"));
+        ticketMenu.setText(mensajes.getString("ticketMenu"));
+        ingresarTicketMenuItem.setText(mensajes.getString("ingresarTicketMenuItem"));
+        retirarTicketMenuItem.setText(mensajes.getString("retirarTicketMenuItem"));
+        retirarTicketMenuItem.setText(mensajes.getString("retirarTicketMenuItem"));
+        listarMenu.setText(mensajes.getString("listarMenu"));
+        listarClientesMenuItem.setText(mensajes.getString("listarClientesMenuItem"));
+        listarVehiculosMenuItem.setText(mensajes.getString("listarVehiculosMenuItem"));
+        listarTicketsMenuItem.setText(mensajes.getString("listarTicketsMenuItem"));
+        idiomaMenu.setText(mensajes.getString("idiomaMenu"));
+        españolMenuItem.setText(mensajes.getString("españolMenuItem"));
+        inglesMenuItem.setText(mensajes.getString("inglesMenuItem"));
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -108,6 +130,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         retirarTicketMenuItem.setMnemonic('y');
         retirarTicketMenuItem.setText("Retirar Tickets");
+        retirarTicketMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                retirarTicketMenuItemActionPerformed(evt);
+            }
+        });
         ticketMenu.add(retirarTicketMenuItem);
 
         menuBar.add(ticketMenu);
@@ -131,9 +158,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         idiomaMenu.setText("Idioma");
 
         españolMenuItem.setText("Español");
+        españolMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                españolMenuItemActionPerformed(evt);
+            }
+        });
         idiomaMenu.add(españolMenuItem);
 
         inglesMenuItem.setText("Ingles");
+        inglesMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inglesMenuItemActionPerformed(evt);
+            }
+        });
         idiomaMenu.add(inglesMenuItem);
 
         menuBar.add(idiomaMenu);
@@ -170,14 +207,31 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         ventRegistroVehiculo.setVisible(true);
     }//GEN-LAST:event_registrarVehiculoMenuItemActionPerformed
 
+    private void retirarTicketMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retirarTicketMenuItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_retirarTicketMenuItemActionPerformed
+
+    private void españolMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_españolMenuItemActionPerformed
+     
+        localizacion = new Locale("es", "EC");
+        mensajes = ResourceBundle.getBundle("ec.edu.ups.idiomas.mensajes", localizacion);
+        cambiarIdioma();
+        
+    }//GEN-LAST:event_españolMenuItemActionPerformed
+
+    private void inglesMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inglesMenuItemActionPerformed
+     
+        localizacion = new Locale("en", "US");
+        mensajes = ResourceBundle.getBundle("ec.edu.ups.idiomas.mensajes", localizacion);
+        cambiarIdioma();
+        
+    }//GEN-LAST:event_inglesMenuItemActionPerformed
+
     public void cerrarVentanas(){
         venRegistroCliente.setVisible(false);
         ventRegistroVehiculo.setVisible(false);
     }
     
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
