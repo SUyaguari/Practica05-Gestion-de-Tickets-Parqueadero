@@ -22,6 +22,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     private VentanaRegistroCliente venRegistroCliente;
     private VentanaRegistroVehiculo ventanaRegistroVehiculo;
+    private VentanaIngresoTicket ventanaIngresoTicket;
     
     private ResourceBundle mensajes;
     private Locale localizacion;
@@ -39,9 +40,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         venRegistroCliente = new VentanaRegistroCliente(controladorCliente);
         ventanaRegistroVehiculo = new VentanaRegistroVehiculo(controladorVehiculo, controladorCliente);
+        ventanaIngresoTicket = new VentanaIngresoTicket(controladorTicket, controladorVehiculo);
         
         desktopPane.add(venRegistroCliente);
         desktopPane.add(ventanaRegistroVehiculo);
+        desktopPane.add(ventanaIngresoTicket);
     }
     
     public void cambiarIdioma(){
@@ -126,6 +129,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         ingresarTicketMenuItem.setMnemonic('t');
         ingresarTicketMenuItem.setText("Ingresar Tickets");
+        ingresarTicketMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ingresarTicketMenuItemActionPerformed(evt);
+            }
+        });
         ticketMenu.add(ingresarTicketMenuItem);
 
         retirarTicketMenuItem.setMnemonic('y');
@@ -227,9 +235,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_inglesMenuItemActionPerformed
 
+    private void ingresarTicketMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarTicketMenuItemActionPerformed
+        
+        cerrarVentanas();
+        ventanaIngresoTicket.setVisible(true);
+        
+    }//GEN-LAST:event_ingresarTicketMenuItemActionPerformed
+
     public void cerrarVentanas(){
         venRegistroCliente.setVisible(false);
         ventanaRegistroVehiculo.setVisible(false);
+        ventanaIngresoTicket.setVisible(false);
     }
     
     public static void main(String args[]) {
