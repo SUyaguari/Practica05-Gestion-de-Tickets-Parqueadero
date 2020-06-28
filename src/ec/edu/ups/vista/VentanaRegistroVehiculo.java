@@ -63,6 +63,8 @@ public class VentanaRegistroVehiculo extends javax.swing.JInternalFrame {
         txtBuscarCliente = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
 
+        setTitle("Registro de Vehiculos");
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 3, 48)); // NOI18N
         jLabel1.setText("Registrar Vehiculos");
 
