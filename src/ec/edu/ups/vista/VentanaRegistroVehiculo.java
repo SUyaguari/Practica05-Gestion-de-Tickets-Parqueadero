@@ -201,7 +201,7 @@ public class VentanaRegistroVehiculo extends javax.swing.JInternalFrame {
         });
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 2, 16)); // NOI18N
-        jLabel8.setText("Buscar:");
+        jLabel8.setText("Buscar Cedula:");
 
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -221,11 +221,13 @@ public class VentanaRegistroVehiculo extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(54, 54, 54))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtBuscarFormattedField, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel6))
-                .addGap(54, 54, 54)
+                        .addComponent(txtBuscarFormattedField, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnMostrar)
                     .addComponent(btnBuscar))
@@ -312,13 +314,7 @@ public class VentanaRegistroVehiculo extends javax.swing.JInternalFrame {
                 
                 limpiar();
                 tblClientes.clearSelection();
-                
-                Map<String, Cliente> con = controladorCliente.listarClientes();
-                for (Map.Entry<String, Cliente> entry : con.entrySet()) {
-                    String key = entry.getKey();
-                    Cliente value = entry.getValue();
-                    System.out.println(value);
-                }
+                dispose();
             }else{
                 JOptionPane.showMessageDialog(this, "Placa del vehiculo ya existente");
             }
