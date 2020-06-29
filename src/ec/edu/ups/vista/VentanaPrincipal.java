@@ -25,6 +25,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private VentanaIngresoTicket ventanaIngresoTicket;
     private VentanaSaliidaTicket ventanaSaliidaTicket;
     private VentanaListarClientes ventanaListarClientes;
+    private VentanaListarVehiculos ventanaListarVehiculos;
     
     private ResourceBundle mensajes;
     private Locale localizacion;
@@ -45,12 +46,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         ventanaIngresoTicket = new VentanaIngresoTicket(controladorTicket, controladorVehiculo, controladorCliente, ventanaRegistroVehiculo);
         ventanaSaliidaTicket = new VentanaSaliidaTicket(controladorTicket, controladorVehiculo, controladorCliente);
         ventanaListarClientes = new VentanaListarClientes(controladorCliente);
+        ventanaListarVehiculos = new VentanaListarVehiculos(controladorVehiculo, controladorCliente);
         
         desktopPane.add(venRegistroCliente);
         desktopPane.add(ventanaRegistroVehiculo);
         desktopPane.add(ventanaIngresoTicket);
         desktopPane.add(ventanaSaliidaTicket);
         desktopPane.add(ventanaListarClientes);
+        desktopPane.add(ventanaListarVehiculos);
     }
     
     public void cambiarIdioma(){
@@ -167,6 +170,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         listarVehiculosMenuItem.setMnemonic('c');
         listarVehiculosMenuItem.setText("Listar Vehiculos");
+        listarVehiculosMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listarVehiculosMenuItemActionPerformed(evt);
+            }
+        });
         listarMenu.add(listarVehiculosMenuItem);
 
         listarTicketsMenuItem.setText("Listar Tickets");
@@ -259,12 +267,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         ventanaListarClientes.setVisible(true);
     }//GEN-LAST:event_listarClientesMenuItemActionPerformed
 
+    private void listarVehiculosMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarVehiculosMenuItemActionPerformed
+        cerrarVentanas();
+        ventanaListarVehiculos.setVisible(true);
+    }//GEN-LAST:event_listarVehiculosMenuItemActionPerformed
+
     public void cerrarVentanas(){
         venRegistroCliente.setVisible(false);
         ventanaRegistroVehiculo.setVisible(false);
         ventanaIngresoTicket.setVisible(false);
         ventanaSaliidaTicket.setVisible(false);
         ventanaListarClientes.setVisible(false);
+        ventanaListarVehiculos.setVisible(false);
     }
     
     public static void main(String args[]) {
