@@ -9,6 +9,7 @@ import ec.edu.ups.idao.IVehiculoDAO;
 import ec.edu.ups.modelo.Ticket;
 import ec.edu.ups.modelo.Vehiculo;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -57,6 +58,22 @@ public class VehiculoDAO implements IVehiculoDAO{
         
         return listaVehiculos;
     
+    }
+
+    @Override
+    public Vehiculo buscarTicket(int numero) {
+         for (Map.Entry<String, Vehiculo> entry : listaVehiculos.entrySet()) {
+            Vehiculo value = entry.getValue();
+            
+             List<Ticket> lista = value.getListaTickets();
+            
+            for (Ticket ticket : lista) {
+                if(ticket.getNumero()==numero){
+                    return value;
+                }
+            }
+        }
+        return null;
     }
     
 }

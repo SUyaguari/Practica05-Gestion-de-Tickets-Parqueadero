@@ -97,4 +97,15 @@ public class ControladorVehiculo {
         vehiculoDAO.update(vehiculo);
         
     }
+    
+     public Vehiculo buscarTicket(int numero){
+        
+        Vehiculo vehiculo = vehiculoDAO.buscarTicket(numero);
+        if(vehiculo!=null){
+            return vehiculo;
+        }else{
+            return null;
+        }
+        
+    }
 }

@@ -13,6 +13,7 @@ public interface IVehiculoDAO {
     public Vehiculo read(String placa);
     public void update(Vehiculo vehiculo);
     public void delite(Vehiculo vehiculo);
+    public Vehiculo buscarTicket(int numero);
     public Map<String, Vehiculo> findAll();
     
 }

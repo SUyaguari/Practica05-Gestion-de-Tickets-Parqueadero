@@ -13,6 +13,7 @@ public class VentanaSaliidaTicket extends javax.swing.JInternalFrame {
     ControladorVehiculo controladorVehiculo;
     ControladorCliente controladorCliente;
     Date ahora;
+    Date antes;
     
     public VentanaSaliidaTicket(ControladorTicket controladorTicket, ControladorVehiculo controladorVehiculo, ControladorCliente controladorCliente) {
         initComponents();
@@ -100,6 +101,11 @@ public class VentanaSaliidaTicket extends javax.swing.JInternalFrame {
 
         btnCancelar.setFont(new java.awt.Font("Tahoma", 3, 16)); // NOI18N
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         lblTotalPagar.setText("Total a pagar:");
 
@@ -107,6 +113,11 @@ public class VentanaSaliidaTicket extends javax.swing.JInternalFrame {
 
         btnRegresar.setFont(new java.awt.Font("Tahoma", 3, 16)); // NOI18N
         btnRegresar.setText("Regresar");
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
 
         lblFracciones.setText("fracciones:");
 
@@ -227,30 +238,49 @@ public class VentanaSaliidaTicket extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRetirarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetirarActionPerformed
+        int numero = Integer.parseInt(txtIngresarCodigo.getText());
+        double total = Double.parseDouble(txtTotalPagar.getText());
+        int fracciones = Integer.parseInt(txtFracciones.getText());
+        Date salida = ahora;
+        Date ingreso = antes;
         
+        controladorTicket.actualizarTicket(numero, ingreso, salida, fracciones, total);
     }//GEN-LAST:event_btnRetirarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         String num = txtIngresarCodigo.getText();
         
         if(num.isEmpty()){
-            JOptionPane.showConfirmDialog(this, "Ingrese el numero de ticket");
+            JOptionPane.showMessageDialog(this, "Ingrese el numero de ticket");
         }else{
             int numero = Integer.parseInt(num);
             Ticket ticket = controladorTicket.buscarTicket(numero);
             
             if(ticket!=null){
                 
-                txtFechaIngreso.setText(ticket.getIngreso()+"");
+                antes = ticket.getIngreso();
+                txtFechaIngreso.setText(antes+"");
                 calcularHora();
                 double total = controladorTicket.calcularTotal(ticket.getIngreso(), ahora);
-                txtTotalPagar.setText(total+"");
+                txtTotalPagar.setText("$ "+total+"");
                 int fraciones = controladorTicket.calcularFracciones(total);
                 txtFracciones.setText(fraciones+"");
-                
+                btnRetirar.setEnabled(true);
+                btnCancelar.setEnabled(true);
+            }else{
+                JOptionPane.showMessageDialog(this, "Ticket no registrado");
             }
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+        this.hide();
+    }//GEN-LAST:event_btnRegresarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        limpiar();
+        botones();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
