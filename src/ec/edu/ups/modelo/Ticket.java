@@ -100,14 +100,14 @@ public class Ticket {
         
         int fracciones = (int) totalTotal/10;
         
-        double total = fracciones*0.25;
+        double total = 0.25 + (fracciones*0.25);
         
         return total;
     }
     
     public int calcularFracciones(double total){
         
-        double frac =  total/0.25;
+        double frac =  (total-0.25)/0.25;
         int fracciones = (int) frac;
         
         return fracciones;

@@ -42,7 +42,7 @@ public class VentanaSaliidaTicket extends javax.swing.JInternalFrame {
     
     public void calcularHora(){
         ahora = new Date();
-        txtFechaSalida.getText();
+        txtFechaSalida.setText(ahora+"");
     }
     
     @SuppressWarnings("unchecked")
