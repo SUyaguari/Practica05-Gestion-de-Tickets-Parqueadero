@@ -23,6 +23,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private VentanaRegistroCliente venRegistroCliente;
     private VentanaRegistroVehiculo ventanaRegistroVehiculo;
     private VentanaIngresoTicket ventanaIngresoTicket;
+    private VentanaSaliidaTicket ventanaSaliidaTicket;
     
     private ResourceBundle mensajes;
     private Locale localizacion;
@@ -41,10 +42,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         venRegistroCliente = new VentanaRegistroCliente(controladorCliente);
         ventanaRegistroVehiculo = new VentanaRegistroVehiculo(controladorVehiculo, controladorCliente);
         ventanaIngresoTicket = new VentanaIngresoTicket(controladorTicket, controladorVehiculo, controladorCliente, ventanaRegistroVehiculo);
+        ventanaSaliidaTicket = new VentanaSaliidaTicket(controladorTicket, controladorVehiculo, controladorCliente);
         
         desktopPane.add(venRegistroCliente);
         desktopPane.add(ventanaRegistroVehiculo);
         desktopPane.add(ventanaIngresoTicket);
+        desktopPane.add(ventanaSaliidaTicket);
     }
     
     public void cambiarIdioma(){
@@ -216,7 +219,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_registrarVehiculoMenuItemActionPerformed
 
     private void retirarTicketMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retirarTicketMenuItemActionPerformed
-        // TODO add your handling code here:
+        cerrarVentanas();
+        ventanaSaliidaTicket.setVisible(true);
     }//GEN-LAST:event_retirarTicketMenuItemActionPerformed
 
     private void españolMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_españolMenuItemActionPerformed
@@ -246,6 +250,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         venRegistroCliente.setVisible(false);
         ventanaRegistroVehiculo.setVisible(false);
         ventanaIngresoTicket.setVisible(false);
+        ventanaSaliidaTicket.setVisible(false);
     }
     
     public static void main(String args[]) {
