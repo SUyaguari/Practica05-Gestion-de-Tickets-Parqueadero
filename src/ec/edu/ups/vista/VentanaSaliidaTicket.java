@@ -3,8 +3,11 @@ package ec.edu.ups.vista;
 import ec.edu.ups.controlador.ControladorCliente;
 import ec.edu.ups.controlador.ControladorTicket;
 import ec.edu.ups.controlador.ControladorVehiculo;
+import ec.edu.ups.modelo.Cliente;
 import ec.edu.ups.modelo.Ticket;
+import ec.edu.ups.modelo.Vehiculo;
 import java.util.Date;
+import java.util.Map;
 import javax.swing.JOptionPane;
 
 public class VentanaSaliidaTicket extends javax.swing.JInternalFrame {
@@ -239,12 +242,28 @@ public class VentanaSaliidaTicket extends javax.swing.JInternalFrame {
 
     private void btnRetirarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetirarActionPerformed
         int numero = Integer.parseInt(txtIngresarCodigo.getText());
-        double total = Double.parseDouble(txtTotalPagar.getText());
+        String tt = txtTotalPagar.getText()+"";
+        String tt2 = "";
+        for (int i = 0; i < tt.length(); i++) {
+            if(i!=0){
+                tt2 = tt2 + tt.charAt(i)+"";
+            }
+        }
+        double total = Double.parseDouble(tt2);
         int fracciones = Integer.parseInt(txtFracciones.getText());
         Date salida = ahora;
         Date ingreso = antes;
         
         controladorTicket.actualizarTicket(numero, ingreso, salida, fracciones, total);
+        Ticket ticket = controladorTicket.buscarTicket(numero);
+        Vehiculo vehiculo = controladorVehiculo.buscarTicket(numero);
+        vehiculo.actualizarTicket(ticket);
+        Cliente cliente = controladorCliente.buscarVehiculos(vehiculo.getPlaca());
+        controladorCliente.actualizarVehiculo(vehiculo, cliente);
+        JOptionPane.showMessageDialog(this, "Ticket retirado correctamente");
+        limpiar();
+        botones();
+        this.hide();
     }//GEN-LAST:event_btnRetirarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed

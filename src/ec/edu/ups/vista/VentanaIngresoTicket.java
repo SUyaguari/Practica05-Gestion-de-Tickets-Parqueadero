@@ -378,14 +378,8 @@ public class VentanaIngresoTicket extends javax.swing.JInternalFrame {
                 tblVehiculos.clearSelection();
                 btnRegistrarTickets.setEnabled(false);
                 limpiar();
+                btnRegistrarTickets.setEnabled(false);
                 this.hide();
-                
-                Map<String, Cliente> lista = controladorCliente.listarClientes();
-                for (Map.Entry<String, Cliente> entry : lista.entrySet()) {
-                    String key = entry.getKey();
-                    Cliente value = entry.getValue();
-                    System.out.println(value);
-                }
             }else{
                 
                 JOptionPane.showMessageDialog(this, "Tiket ya registrado");

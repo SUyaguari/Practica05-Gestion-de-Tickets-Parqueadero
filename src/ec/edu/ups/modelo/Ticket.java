@@ -133,7 +133,7 @@ public class Ticket {
 
     @Override
     public String toString() {
-        return "Ticket{" + "numero=" + numero + ", ingreso=" + ingreso + ", salida=" + salida + ", total=" + total + '}';
+        return "Ticket{" + "numero=" + numero + ", ingreso=" + ingreso + ", salida=" + salida + ", fracciones=" + fracciones + ", total=" + total + '}';
     }
     
     
